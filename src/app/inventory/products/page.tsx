@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import productsData from './sample/dummy_products.json'
 import Link from 'next/link'
 
-type ProductsData = {
+type ProductData = {
   id: number
   name: string
   price: number
@@ -20,7 +20,7 @@ type InputData = {
 
 export default function Page() {
   // 読み込みデータを保持
-  const [data, setData] = useState<Array<ProductsData>>([])
+  const [data, setData] = useState<Array<ProductData>>([])
   useEffect(() => {
     setData(productsData)
   }, [])
@@ -55,7 +55,7 @@ export default function Page() {
   const handleEditRow = (id: number) => {
     setShownNewRow(false)
     setEditingRow(id)
-    const selectedProduct: ProductsData = data.find((v) => v.id === id) as ProductsData
+    const selectedProduct: ProductData = data.find((v) => v.id === id) as ProductData
     setInput({
       id: id.toString(),
       name: selectedProduct.name,
